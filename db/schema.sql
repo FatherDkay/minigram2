@@ -1,0 +1,3 @@
+DROP DATABASE IF EXISTS  minigram2;
+
+CREATE DATABASE  minigram2;
