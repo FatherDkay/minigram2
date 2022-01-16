@@ -60,9 +60,21 @@ router.post('/', (req, res) => {
     email: req.body.email,
     password: req.body.password
   })
+    // pre 14.2.5
+    // .then(dbUserData => {
+    //   res.json(dbUserData);
+    // })
+     // 14.2.5
     .then(dbUserData => {
-      res.json(dbUserData);
+      req.session.save(() => {
+        req.session.user_id = dbUserData.id;
+        req.session.username = dbUserData.username;
+        req.session.loggedIn = true;
+    
+        res.json(dbUserData);
+      });
     })
+
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
