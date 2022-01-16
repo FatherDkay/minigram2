@@ -1,19 +1,18 @@
 const router = require('express').Router();
-const { Post, Category, User } = require('../../models');
+const { Post, User } = require('../../models');
 
 // get all users
 router.get('/', (req, res) => {
     Post.findAll({
-      attributes: ['id', 'title', 'content', 'created_at'],
-      order: [['created_at', 'DESC']],
-      include: [
-        {
-          model: User,
-          attributes: ['username']
-        }
-      ]
-    })
-      .then(dbPostData => res.json(dbPostData))
+        attributes: ['id', 'category','title', 'content','created_at'],
+        include: [
+          {
+            model: User,
+            attributes: ['username']
+          }
+        ]
+      })
+        .then(dbPostData => res.json(dbPostData))
       .catch(err => {
         console.log(err);
         res.status(500).json(err);
@@ -25,7 +24,7 @@ router.get('/', (req, res) => {
       where: {
         id: req.params.id
       },
-      attributes: ['id', 'title', 'content', 'created_at'],
+      attributes: ['id', 'category', 'title', 'content', 'created_at'],
       include: [
         {
           model: User,
@@ -48,6 +47,7 @@ router.get('/', (req, res) => {
 
   router.post('/', (req, res) => {
     Post.create({
+      category: req.body.category,
       title: req.body.title,
       content: req.body.content,
       user_id: req.body.user_id
@@ -62,7 +62,9 @@ router.get('/', (req, res) => {
   router.put('/:id', (req, res) => {
     Post.update(
       {
-        title: req.body.title
+        category: req.body.category,
+        title: req.body.title,
+        content: req.body.content
       },
       {
         where: {

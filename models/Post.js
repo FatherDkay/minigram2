@@ -11,13 +11,11 @@ Post.init(
         primaryKey: true,
         autoIncrement: true
       },
-    //   category_id: {
-    //     type: DataTypes.INTEGER,
-    //     references: {
-    //       model: 'category',
-    //       key: 'id'
-    //     }
-    //   },
+      category: {
+        type: DataTypes.STRING,
+          allowNull: false,
+          defaultValue: 'Other'
+        },
       title: {
         type: DataTypes.STRING,
         allowNull: false
