@@ -1,7 +1,7 @@
 const router = require('express').Router();
-const { User, Post, Vote, Comment } = require('../../models');
+const { User, Post, Comment, Vote } = require('../../models');
 
-// Get all users
+// get all users
 router.get('/', (req, res) => {
   User.findAll({
     attributes: { exclude: ['password'] }
@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
       res.status(500).json(err);
     });
 });
-// Get user by ID
+
 router.get('/:id', (req, res) => {
   User.findOne({
     attributes: { exclude: ['password'] },
@@ -22,7 +22,7 @@ router.get('/:id', (req, res) => {
     include: [
       {
         model: Post,
-        attributes: ['id', 'category', 'title', 'created_at']
+        attributes: ['id', 'title', 'post_url', 'created_at']
       },
       {
         model: Comment,
@@ -60,7 +60,9 @@ router.post('/', (req, res) => {
     email: req.body.email,
     password: req.body.password
   })
-    .then(dbUserData => res.json(dbUserData))
+    .then(dbUserData => {
+      res.json(dbUserData);
+    })
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -68,6 +70,7 @@ router.post('/', (req, res) => {
 });
 
 router.post('/login', (req, res) => {
+  // expects {email: 'lernantino@gmail.com', password: 'password1234'}
   User.findOne({
     where: {
       email: req.body.email
@@ -100,7 +103,7 @@ router.put('/:id', (req, res) => {
     }
   })
     .then(dbUserData => {
-      if (!dbUserData[0]) {
+      if (!dbUserData) {
         res.status(404).json({ message: 'No user found with this id' });
         return;
       }
@@ -132,4 +135,3 @@ router.delete('/:id', (req, res) => {
 });
 
 module.exports = router;
-
