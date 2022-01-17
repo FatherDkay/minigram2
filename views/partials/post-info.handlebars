@@ -1,0 +1,11 @@
+<article class="post">
+    <div class="title">
+        {{title}} <span class="category">Category: {{category}}</span>
+    <div class="content">{{content}}</div>
+    </div>
+<div class="meta">
+  {{vote_count}} {{format_plural "point" vote_count}} by {{user.username}} on {{format_date created_at}}
+  |
+  <a href="/post/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
+</div>
+</article>
