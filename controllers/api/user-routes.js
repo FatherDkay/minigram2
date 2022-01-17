@@ -60,11 +60,6 @@ router.post('/', (req, res) => {
     email: req.body.email,
     password: req.body.password
   })
-    // pre 14.2.5
-    // .then(dbUserData => {
-    //   res.json(dbUserData);
-    // })
-     // 14.2.5
     .then(dbUserData => {
       req.session.save(() => {
         req.session.user_id = dbUserData.id;
@@ -81,6 +76,7 @@ router.post('/', (req, res) => {
     });
 });
 
+// Login user
 router.post('/login', (req, res) => {
   User.findOne({
     where: {
@@ -103,8 +99,8 @@ router.post('/login', (req, res) => {
   });
 });
 
+// Update user
 router.put('/:id', (req, res) => {
-
   User.update(req.body, {
     individualHooks: true,
     where: {
@@ -124,6 +120,7 @@ router.put('/:id', (req, res) => {
     });
 });
 
+// Delete user
 router.delete('/:id', (req, res) => {
   User.destroy({
     where: {
