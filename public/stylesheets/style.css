@@ -25,10 +25,11 @@
     height: 100%;
     padding: 0;
     margin: 0;
-    font-family: sans-serif;
-    color: #333;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 5px;
     border: 1px solid black;
-    
+    font-size: 80%;
   }
 
   a {
@@ -183,11 +184,17 @@ select{
   }
   
   .comment .meta {
-    font-size: 90%;
+    font-size: 80%;
     margin-bottom: .5%;
     opacity: .6;
   }
-  
+
+  .commentInfo {
+    font-size: 80%;
+    margin-bottom: .5%;
+    opacity: .6;
+}
+
   .new-post-form input {
     width: 400px;
   }
