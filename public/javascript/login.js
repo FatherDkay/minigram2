@@ -46,6 +46,7 @@ async function signupFormHandler(event) {
     if (response.ok) {
       console.log('success');
       window.alert('Welcome!');
+      document.location.replace('/dashboard');
     } else {
       alert(response.statusText);
     }
