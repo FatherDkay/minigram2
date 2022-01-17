@@ -1,25 +1,26 @@
-    <article class="post">
-      <div class="title">
-          {{post.title}} <span class="category">Category: {{post.category}}</span>
-        <div class="content">{{post.content}}</div>
-      </div>
-      <div class="meta">
-        {{post.vote_count}} point(s) by {{post.user.username}} on
-        {{post.created_at}}
-        |
-        <a href="/post/{{id}}">{{post.comments.length}} comment(s)</a>
-      </div>
-    </article>
-    <form class="comment-form">
+<article class="post">
+  <div class="title">
+      {{post.title}} <span class="category">Category: {{post.category}}</span>
+    <div class="content">{{post.content}}</div>
+  </div>
+  <div class="meta">
+    {{post.vote_count}} point(s) by {{post.user.username}} on
+    {{post.created_at}}
+    |
+    <a href="/post/{{id}}">{{post.comments.length}} comment(s)</a>
+  </div>
+</article>
+{{#if loggedIn}}
+<form class="comment-form">
   <div>
     <textarea name="comment-body"></textarea>
   </div>
-
   <div>
     <button type="submit">Add Comment</button>
     <button type="button" class="upvote-btn">Up-Vote</button>
   </div>
 </form>
+{{/if}}
 
 <div class="comments">
   {{#each post.comments}}
@@ -34,5 +35,7 @@
   {{/each}}
 </div>
 
+{{#if loggedIn}}
 <script src="/javascript/comment.js"></script>
 <script src="/javascript/upvote.js"></script>
+{{/if}}

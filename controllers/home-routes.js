@@ -5,38 +5,42 @@ const { Post, User, Comment } = require('../models');
 // Get all posts for home page
 router.get('/', (req, res) => {
   console.log(req.session);
-    Post.findAll({
-      attributes: [
-        'id',
-        'category',
-        'title',
-        'content',
-        'created_at',
-        [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
-      ],
-      include: [
-        {
-          model: Comment,
-          attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-          include: {
-            model: User,
-            attributes: ['username']
-          }
-        },
-        {
+Post.findAll({
+    attributes: [
+      'id',
+      'category',
+      'title',
+      'content',
+      'created_at',
+      [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
+    ],
+    include: [
+      {
+        model: Comment,
+        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+        include: {
           model: User,
           attributes: ['username']
         }
-      ]
-    })
-      .then(dbPostData => {
-        const posts = dbPostData.map(post => post.get({ plain: true }));
-        res.render('homepage', { posts });
-      })
-      .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
+      },
+      {
+        model: User,
+        attributes: ['username']
+      }
+    ]
+  })
+    .then(dbPostData => {
+      const posts = dbPostData.map(post => post.get({ plain: true }));
+
+      res.render('homepage', {
+        posts,
+        loggedIn: req.session.loggedIn
       });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 // Login route
@@ -45,6 +49,7 @@ router.get('/login', (req, res) => {
     res.redirect('/');
     return;
   }
+
   res.render('login');
 });
 
@@ -87,7 +92,10 @@ router.get('/post/:id', (req, res) => {
       const post = dbPostData.get({ plain: true });
 
       // pass data to template
-      res.render('single-post', { post });
+      res.render('single-post', {
+        post,
+      loggedIn: req.session.loggedIn
+     });
     })
     .catch(err => {
       console.log(err);
