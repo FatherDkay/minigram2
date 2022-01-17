@@ -83,9 +83,9 @@ router.get('/', (req, res) => {
       category: req.body.category,
       title: req.body.title,
       content: req.body.content,
-      user_id: req.body.user_id
+      user_id: req.session.user_id
     })
-      .then(dbPostData => res.json(dbPostData))
+       .then(dbPostData => res.json(dbPostData))
       .catch(err => {
         console.log(err);
         res.status(500).json(err);
@@ -110,6 +110,9 @@ router.put('/upvote', (req, res) => {
 
 // Update post
   router.put('/:id', (req, res) => {
+    console.log(req.body.category)
+    console.log(req.body.title)
+    console.log(req.body.content)
     Post.update(
       {
         category: req.body.category,

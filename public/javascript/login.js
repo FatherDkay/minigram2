@@ -17,7 +17,7 @@ async function loginFormHandler(event) {
 
     if (response.ok) {
       window.alert('Welcome!');
-      document.location.replace('/');
+      document.location.replace('/dashboard');
     } else {
       alert(response.statusText);
     }
