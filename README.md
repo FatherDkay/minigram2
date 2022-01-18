@@ -31,4 +31,4 @@ https://www.github.com/FatherDkay
 paul.d.bailey@hotmail.com
 
 ## Screenshot
-![ScreenShot](/assets/MiniGramScreenShot.jpg "Screen Shot of MiniGram")
+![ScreenShot](/public/assets/MiniGramScreenShot.jpg "Screen Shot of MiniGram")
