@@ -1,5 +1,5 @@
 async function editFormHandler(event) {
-  window.alert("CLICK");
+ // window.alert("CLICK");
   event.preventDefault();
 
   const category = document.querySelector('select[name="category').value.trim();
