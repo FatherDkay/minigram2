@@ -6,6 +6,7 @@
 * [Contribution](#contribution)
 * [License](#license)
 * [GitHub User Name / Email](#user)
+* [Screenshot](#screenshot)
 ## Description
 This is a blog/social-medial site designed for hobbyists who enjoy crafting and creating miniatures.
 
@@ -28,3 +29,6 @@ https://www.github.com/FatherDkay
 
 ## Email
 paul.d.bailey@hotmail.com
+
+## Screenshot
+![ScreenShot](/assets/MiniGramScreenShot.jpg "Screen Shot of MiniGram")
