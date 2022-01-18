@@ -18,16 +18,16 @@
 
 <body class="bg-purple-100">
   <div class="wrapper font-sans">
-    <header>
-      <h1>
-        <a href="/" class="font-bold text-lg font-bold">MiniGram  (a big space for small hobbies)</a>
+    <header class="bg-white shadow-md P-3">
+      <h1 class="miniGram">
+        <a href="/" class="font-bold text-lg font-bold miniGram"><span class="text-purple-400">M</span><span class="miniGram">ini</span><span class="text-purple-400">G</span><span class="miniGram">ram</span>  <span class="font-light miniGram">(a big space for small hobbies)</span> </a>
       </h1>
-      <nav class="w-full flex justify-between bg-white shadow-md p-4">
+      <nav class="w-full flex justify-around bg-gray">
         {{#if loggedIn}}
-        <a href="/dashboard" class="flex-1 text-purple-400 hover:text-purple-900 mx-4">dashboard</a>
-        <button id="logout" class="bg-purple-400 hover:bg-purple-900 border-solid rounded border-2 border-purple-400 hover:border-purple-900 text-sm text-white font-semibold py-2 px-5 mx-4">logout</button>
+        <a href="/dashboard" class="bg-purple-400 hover:bg-purple-900 border-solid rounded border-2 border-purple-400 hover:border-purple-900 text-sm text-white font-semibold py-2 px-5 mx-4">Dashboard</a>
+        <button id="logout" class="bg-purple-400 hover:bg-purple-900 border-solid rounded border-2 border-purple-400 hover:border-purple-900 text-sm text-white font-semibold py-2 px-5 mx-4">Logout</button>
         {{else}}
-        <a href="/login" class="bg-transparent hover:bg-purple-400 border-solid rounded border-2 border-purple-400 hover:border-none text-sm text-purple-400 font-semibold hover:text-white py-2 px-5 mx-4">login</a>
+        <a href="/login" class="bg-transparent hover:bg-purple-400 border-solid rounded border-2 border-purple-400 hover:border-none text-sm text-purple-400 font-semibold hover:text-white py-2 px-5 mx-4">Login</a>
         {{/if}}
       </nav>
     </header>
@@ -35,7 +35,7 @@
       {{{ body }}}
     </main>
     <footer>
-      Thanks for visiting!
+      Thanks for stopping by!
     </footer>
   </div>
 {{#if loggedIn}}
