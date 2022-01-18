@@ -40,13 +40,13 @@
   }
   
   a:hover {
-    color: #3486eb;
+    color: white;
   }
   
   button {
     background-color: #225ca3;
     border: 0;
-    padding: 1%;
+    padding: 2%;
     color: white;
     font-weight: bold;
     transition: background-color .1s;
@@ -55,7 +55,7 @@
   }
   
   button:hover {
-    background-color: #3486eb;
+    background-color: #c084fc;
   }
   
   .post-list {
@@ -136,9 +136,27 @@ select{
     background: none;
     color: #3486eb;
   }
+ 
+  .save-post-btn {
+    padding-left: 2px;
+    padding-right: 2px;
+    margin-left: 5px;
+  }
+
+  .delete-post-btn:hover {
+    background-color: #c084fc;
+    color: white;
+  }
   
+  .delete-post-btn:hover {
+    background-color: #f83808;
+    color: white;
+  }
+
   .delete-post-btn {
-    background-color: #d41414;
+    padding-left: 2px;
+    padding-right: 2px;
+    margin-left: 5px;
   }
   
   .delete-post-btn:hover {
@@ -203,6 +221,13 @@ select{
     width: 400px;
   }
 
+  .edit-post-form input {
+    width: 400px;
+  }
+  
+  .edit-post-form textarea {
+    width: 400px;
+  }
 
   .edit-post-form {
     margin-bottom: 5%;
@@ -214,4 +239,12 @@ select{
     justify-content: center;
     padding: 1%;
     font-size: 110%;
+  }
+
+  .boarderBox {
+    border-radius: 5px;
+    border: 2px solid black;
+  }
+  .miniGram:hover {
+    color: black !important;
   }
